@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "thelottery"
+version = "0.1.0"
+description = ""
+authors = ["xueyp <xueyp.gtd@gmail.com>"]
+readme = "README.md"
+packages = [{include = "thelottery", from = "src"}]
+
+[tool.poetry.scripts]
+spider = "thelottery.spider:main"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
