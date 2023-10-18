@@ -1,1 +1,1 @@
-__all__ = ['spider']
+__all__ = ['spider','obtain','log']
