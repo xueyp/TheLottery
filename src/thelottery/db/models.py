@@ -1,6 +1,4 @@
-from sqlalchemy.ext.declarative import declarative_base
-Base = declarative_base()
-
+from db.lotterydb_init import *
 from sqlalchemy import Column, Integer, String
 
 class Dball(Base):

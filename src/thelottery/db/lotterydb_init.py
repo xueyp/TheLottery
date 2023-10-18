@@ -1,9 +1,11 @@
 from sqlalchemy import MetaData,create_engine,Table,Column,Integer,String
 from thelottery import log
+from sqlalchemy.ext.declarative import declarative_base
 engine = create_engine('sqlite:///dball.sqlite',echo=True)
 
 conn = engine.connect()
 metadata = MetaData()
+Base = declarative_base()
 
 dball = Table('dball', metadata,
               Column('Id', Integer(),primary_key=True),
