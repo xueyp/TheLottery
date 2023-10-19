@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="title">{% block title %} 双色球{% endblock %}</h1>
+<div class="content">
+  <div class="dballs">
+    <table border="1">
+    <tr>
+        <th>期数</th>
+        <th>红1</th>
+        <th>红2</th>
+        <th>红3</th>
+        <th>红4</th>
+        <th>红5</th>
+        <th>红6</th>
+        <th>蓝</th>
+    </tr>
+    {% for b in balls%}
+        <tr>
+            <td>{{ b.id }}</td>
+            <td>{{ b.r1 }}</td>
+            <td>{{ b.r2 }}</td>
+            <td>{{ b.r3 }}</td>
+            <td>{{ b.r4 }}</td>
+            <td>{{ b.r5 }}</td>
+            <td>{{ b.r6 }}</td>
+            <td>{{ b.b }}</td>
+        </tr>
+    {% endfor %}
+</table>
+  </div>
+</div>
+{% endblock %}
