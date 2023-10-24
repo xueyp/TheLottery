@@ -1,1 +1,1 @@
-__all__=['lotterydb_init','models']
+__all__=['lotterydb_init','models','exts']
