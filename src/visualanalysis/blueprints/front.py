@@ -10,6 +10,7 @@ import os
 from io import BytesIO
 import base64
 from thelottery.db.models import Dball
+from thelottery import obtain as obtain
 
 front_blueprint = Blueprint("front", __name__, url_prefix="/")
 
@@ -40,3 +41,9 @@ def plot_scatter():
 @front_blueprint.route('/hello')
 def say_hello():
     return 'hello'
+
+@front_blueprint.route('/getlast')
+def get_last():
+    obtain.obtainFromLastID()
+    obtain.saveToSqlite()
+    return redirect(url_for('front.index'))

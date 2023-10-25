@@ -1,6 +1,5 @@
 import threading
 import datetime
-from sqlalchemy.orm import Session
 import concurrent.futures
 import time
 import csv
@@ -8,8 +7,9 @@ import random
 from sqlalchemy import Integer
 from thelottery import spider as spider
 from thelottery import log
-from db.models import Dball
-from db.lotterydb_init import *
+from thelottery.db.models import Dball
+from thelottery.db.lotterydb_init import *
+from thelottery.db.exts import db
 
 balls = []
 
@@ -49,9 +49,9 @@ def obtainByYear(year: int) -> None:
 
 def getLast():
     last = None
-    with Session(engine, expire_on_commit=False) as session:
-        last = session.query(Dball).order_by(Dball.id.desc()).first()
-        session.commit()
+    last = db.session.execute(db.select(Dball).order_by(Dball.id.desc())).scalars().first()
+    print(str(last))
+    db.session.commit()
     return last
 
 
@@ -78,9 +78,8 @@ def saveToSqlite():
         b = Dball(id=row[0], r1=row[1], r2=row[2], r3=row[3],
                   r4=row[4], r5=row[5], r6=row[6], b=row[7])
         log.logger.info('insert Dball:'+str(b))
-        with Session(engine) as session:
-            session.add(b)
-            session.commit()
+        db.session.add(b)
+        db.session.commit()
 
     log.logger.info('stop write db')
 

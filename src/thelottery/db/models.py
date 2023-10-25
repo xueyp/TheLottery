@@ -1,15 +1,17 @@
 from .exts import db
+from sqlalchemy.orm import Mapped, mapped_column, relationship
+from sqlalchemy import Integer, String
 
 class Dball(db.Model):
     __tablename__ = 'dball'
-    id = db.Column(db.Integer, primary_key=True, autoincrement=False)
-    r1 = db.Column(db.Integer)
-    r2 = db.Column(db.Integer)
-    r3 = db.Column(db.Integer)
-    r4 = db.Column(db.Integer)
-    r5 = db.Column(db.Integer)
-    r6 = db.Column(db.Integer)
-    b = db.Column(db.Integer)
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    r1: Mapped[int]  = mapped_column(Integer)
+    r2: Mapped[int]  = mapped_column(Integer)
+    r3: Mapped[int]  = mapped_column(Integer)
+    r4: Mapped[int]  = mapped_column(Integer)
+    r5: Mapped[int]  = mapped_column(Integer)
+    r6: Mapped[int]  = mapped_column(Integer)
+    b: Mapped[int]  = mapped_column(Integer)
 
     def getScatterData():
       x=[]
