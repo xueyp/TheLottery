@@ -10,4 +10,6 @@
 
 使用方式：
 
-进入 "/src/visualanalysis" 目录，运行 “flask run" ，然后浏览器打开 http://127.0.0.1:5000/index
+1 在根目录下执行：pip install -e .  # 以可编辑安装方式到环境中
+
+2 在根目录下执行：python  src/visualanalysis/app.py，然后浏览器打开 http://127.0.0.1:5000/index
